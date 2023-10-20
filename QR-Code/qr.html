@@ -2,10 +2,11 @@
     <html>
         <head>
             <title>QR-Code</title>
+            <link rel="stylesheet" type="text/css" href="style.css"/>
         </head>
         <body>
-            <div class="selection-container">
-                <selection class="header">
+            <div class="user-input-selection">
+                <selection class="heading">
                     <div class="title">
                         QR GENERATOR
                     </div>
@@ -13,13 +14,13 @@
                         Generate QR Code
                     </div>
                 </selection>
-                <selection class="input">
-                    <input type="text" name="input" class="input" id="input">
+                <selection class="user-input">
+                    <input type="text" name="input_text" class="input_text" id="input_text">
                     <button class="button" type="submit">Generate</button>
                 </selection>
             </div>
-            <div class="qr-container">
-                <div class="qr"></div>
+            <div class="qr-code-container">
+                <div class="qr-code"></div>
             </div>
             <script src="script.js"></script>
         </body>

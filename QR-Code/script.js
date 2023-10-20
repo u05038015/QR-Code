@@ -1,8 +1,8 @@
 let button = document.querySelector(".button");
-let qr_code = document.querySelector(".qr");
+let qr_code = document.querySelector(".qr-code");
 
 button.addEventListener("click", () =>{
-    let input = document.querySelector("#input");
+    let input = document.querySelector("#input_text");
     if (input.value != "") {
         if (qr_code.childElementCount == 0) {
             generate(input);
@@ -17,7 +17,7 @@ button.addEventListener("click", () =>{
     }
 });
 
-function generate(input){
+function generate(user_input){
     qr_code.style = "";
 
     let qr_code = new QRCpde(qr_code, {
