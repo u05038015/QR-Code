@@ -1,5 +1,5 @@
 let btn = document.querySelector(".button");
-let qr_code_element = document.querySelector(".qr-code");
+let qr_code_element = document.querySelector(".qr-code-container .qr-code");
 
 btn.addEventListener("click", () => {
     let user_input = document.querySelector("#input_text");
@@ -29,14 +29,10 @@ function generate(user_input){
         correctLevel: QRCode.CorrectLevel.H
     });
 
-    let download = document.createElement("button");
-    qr_code_element.appendChild(download);
-
-    let download_link = document.createElement("button");
+    let download_link = document.createElement("a");
     download_link.setAttribute("download", "qr_code.png");
     download_link.innerHTML = `Download`;
-
-    download.appendChild(download_link);
+    qr_code_element.appendChild(download_link);
 
     let qr_code_img = document.querySelector(".qr_code_img");
     let qr_code_canvas = document.querySelector("canvas");
