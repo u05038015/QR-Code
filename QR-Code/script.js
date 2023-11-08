@@ -1,58 +1,58 @@
-let button = document.querySelector(".button");
-let qr_code = document.querySelector(".qr-code");
+let btn = document.querySelector(".button");
+let qr_code_element = document.querySelector(".qr-code");
 
-button.addEventListener("click", () =>{
-    let input = document.querySelector("#input_text");
-    if (input.value != "") {
-        if (qr_code.childElementCount == 0) {
-            generate(input);
+btn.addEventListener("click", () => {
+    let user_input = document.querySelector("#input_text");
+    if (user_input.value != ""){
+        if(qr_code_element.childElementCount == 0){
+            generate(user_input);
         }
         else {
-            qr_code.innerHTML = "";
-            generate(input);
+            qr_code_element.innerHTML ="";
+            generate(user_input);
         }
     }
     else {
-        qr_code.style = "display: none";
+        qr_code_element.style = "display: none";
     }
 });
 
 function generate(user_input){
-    qr_code.style = "";
+    qr_code_element.style = "";
 
-    let qr_code = new QRCpde(qr_code, {
-        text: '${input.value}',
+    let qrcode = new QRCode(qr_code_element, {
+        text: `${user_input.value}`,
         width: 180,
         height: 180,
         colorDark: "#000000",
         colorLight: "#ffffff",
-        correctLevel: QRCode.correctLevel.H
+        correctLevel: QRCode.CorrectLevel.H
     });
 
     let download = document.createElement("button");
-    qr_code.appendChild(download);
+    qr_code_element.appendChild(download);
 
-    let link = document.createElement("a");
-    link.setAttribute("download", "qr_code.png");
-    link.innerHTML = `Download`;
+    let download_link = document.createElement("button");
+    download_link.setAttribute("download", "qr_code.png");
+    download_link.innerHTML = `Download`;
 
-    download.appendChild(link);
+    download.appendChild(download_link);
 
-    let qr_img = document.querySelector(".qr-code img");
-    let qr_canvas = document.querySelector("canvas");
+    let qr_code_img = document.querySelector(".qr_code_img");
+    let qr_code_canvas = document.querySelector("canvas");
 
-    if (qr_img.getAttribute("src") === null){
+    if (qr_code_img.getAttribute("src") === null){
         setTimeout(() => {
-            link.setAttribute("href", `${qr_canvas.toDataURL()}`);
-        }, 300);
+            download_link.setAttribute("href", `${qr_code_canvas.toDataURL()}`);
+        },300);
     }
     else {
         setTimeout(() => {
-            link.setAttribute("href", `${qr_img.getAttribute("src")}`);
-        }, 300);
+            download_link.setAttribute("href", `${qr_code_img.getAttribute("src")}`);
+        },300);
     }
 }
 
 generate({
-    value: "https://codepen.io/coding_dev"
-});
+    value: "hhtps://codepen.io/coding_dev_"
+})
